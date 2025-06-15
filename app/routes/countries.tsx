@@ -43,6 +43,8 @@ export default function Countries({ loaderData }: Route.ComponentProps) {
                     <option value="oceania"> Oceania </option> 
                 </select>
             </div>
+
+            {filteredCountries.length === 0 ? (<div> No countries match your filters. </div>) : (
             <ul>
                 {filteredCountries.map((country: any, key: number) => (
                     <li key={key}>
@@ -52,7 +54,8 @@ export default function Countries({ loaderData }: Route.ComponentProps) {
                         </div>
                     </li>
                 ))}
-            </ul>
+            </ul>)
+            }
         </div>
     );
 }
