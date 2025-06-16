@@ -2,6 +2,12 @@ import { Link } from "react-router";
 import type { Route } from "./+types/countries";
 import { useState } from "react";
 
+export function meta() {
+    return [
+        {title: "Countries | RESTExplorer"},
+        {name: "description", content:"This is a list of the countries of the world with regions and population."}
+    ]
+}
 export async function clientLoader() {
     const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region");
     const data = await res.json();

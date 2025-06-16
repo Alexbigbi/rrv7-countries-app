@@ -1,5 +1,13 @@
 import type { Route } from "./+types/country";
 
+export function meta({ params }: Route.LoaderArgs) {
+    const country = params.countryName;
+    return [
+        {title: `${country} | RESTExplorer`},
+        {name:"description", content:`Learn about ${country} and discover many wonderful facts!`}
+    ]
+}
+
 export async function clientLoader({ params }: Route.LoaderArgs) {
     const countryName = params.countryName;
 
@@ -22,7 +30,7 @@ export default function Country({ loaderData }: Route.ComponentProps) {
 
     return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
             <h2 className="text-2xl font-bold text-gray-900"> {country.name} </h2>
             <div className="space-y-2 text-gray-700">
                 <p> 

@@ -1,3 +1,10 @@
+export function meta() {
+    return [
+        {title:"About | RESTExplorer"},
+        {name:"description", content:"Learn about RESTExplorer, our goal and mission!"}
+    ]
+}
+
 export default function About() {
     return (
         <div className="py-16 bg-white">
