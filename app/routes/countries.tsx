@@ -23,18 +23,23 @@ export default function Countries({ loaderData }: Route.ComponentProps) {
     })
 
     return (
-        <div>
-            <h2> Countries </h2>
+        <div className="p-6">
+            <h2 className="text-2xl font-semibold mb-6"> Countries </h2>
 
-            <div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <input 
                 type="text" 
                 placeholder="Search by name..."
                 value={search} 
                 onChange={(e) => setSearch(e.target.value)}
+                className="border border-gray-300 rounded px-3 py-2 w-full sm:w-1/2 focus:outline-none focus:border-indigo-500"
                 />
 
-                <select value={region} onChange={(e) => setRegion(e.target.value)}>
+                <select 
+                value={region} 
+                onChange={(e) => setRegion(e.target.value)}
+                className="border border-gray-300 rounded px-3 py-2 w-full sm:w-1/2 focus:outline-none focus:border-indigo-500"
+                >
                     <option value="">All Regions </option>
                     <option value="africa"> Africa </option>
                     <option value="americas"> Americas </option>
@@ -45,11 +50,17 @@ export default function Countries({ loaderData }: Route.ComponentProps) {
             </div>
 
             {filteredCountries.length === 0 ? (<div> No countries match your filters. </div>) : (
-            <ul>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {filteredCountries.map((country: any, key: number) => (
-                    <li key={key}>
-                        <Link to={`/countries/${country.name.common}`}> { country.name.common }</Link>
-                        <div>
+                    <li 
+                        key={key}
+                        className="bg-white border-gray-200 rounded-xl p-4 shadow hover:shadow-lg transition"
+                    >
+                        <Link 
+                            to={`/countries/${country.name.common}`}
+                            className="text-indigo-600 hover:underline text-lg font-semibold"
+                        > { country.name.common }</Link>
+                        <div className="text-gray-600 text-sm mt-1">
                             Region: {country.region} | Population: { country.population} 
                         </div>
                     </li>
